@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Palindrome and Color Change on Hover</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        #palindrome-section {
+            width: 100%;
+            height: 300px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s;
+        }
+
+        #palindrome-section:hover {
+            cursor: pointer;
+        }
+
+        #palindrome-text {
+            color: #fff;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Multilingual Palindrome and Color Change on Hover</h1>
+    </header>
+    <section id="palindrome-section" onmouseover="showPalindrome()">
+        <h2 id="palindrome-text">Hover over me to see a random multilingual palindrome</h2>
+    </section>
+
+    <script>
+        const palindromes = [
+            'A man a plan a canal Panama', // English
+            'A Santa at NASA', // English
+            'A Toyota’s a Toyota', // English
+            'Et la marine va venir à Malte', // French
+            'Esope reste ici et se repose', // French
+            'Engage le jeu que je le gagne', // French
+            'Anita lava la tina', // Spanish
+            'La ruta nos aporto otro paso natural', // Spanish
+            'Dábale arroz a la zorra el abad', // Spanish
+        ];
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function getRandomPalindrome() {
+            return palindromes[Math.floor(Math.random() * palindromes.length)];
+        }
+
+        function showPalindrome() {
+            const palindromeSection = document.getElementById('palindrome-section');
+            const palindromeText = document.getElementById('palindrome-text');
+            palindromeSection.style.backgroundColor = getRandomColor();
+            palindromeText.textContent = getRandomPalindrome();
+        }
+    </script>
+</body>
+</html>
